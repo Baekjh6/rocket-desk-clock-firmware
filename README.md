@@ -1,5 +1,7 @@
 # Rocket Desk Clock firmware / 로켓 탁상시계 펌웨어
 
+**Install page / 설치 페이지: https://baekjh6.github.io/rocket-desk-clock-firmware/**
+
 Firmware for the **Waveshare ESP32-S3-Touch-AMOLED-1.75** round display module used in the Rocket Desk Clock (clock, exchange rates, gold, stock indices, rates, watch lists, English voice commands after "Hi ESP").
 Waveshare ESP32-S3-Touch-AMOLED-1.75 원형 디스플레이 모듈용 펌웨어입니다 (시계, 환율, 금, 주가지수, 기준금리, 관심 종목, "Hi ESP" 뒤 영어 음성 명령).
 
