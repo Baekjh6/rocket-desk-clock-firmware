@@ -1,0 +1,33 @@
+{
+  "name": "Rocket Desk Clock firmware",
+  "version": "495cefa (built 2026-11-18, ESP-IDF v5.5.4)",
+  "new_install_prompt_erase": true,
+  "new_install_improv_wait_time": 0,
+  "builds": [
+    {
+      "chipFamily": "ESP32-S3",
+      "parts": [
+        {
+          "path": "firmware/bootloader.bin",
+          "offset": 0
+        },
+        {
+          "path": "firmware/partition-table.bin",
+          "offset": 32768
+        },
+        {
+          "path": "firmware/fx-clock-app.bin",
+          "offset": 65536
+        },
+        {
+          "path": "firmware/voice-models.bin",
+          "offset": 6356992
+        },
+        {
+          "path": "firmware/Pretendard-Medium.ttf",
+          "offset": 12648448
+        }
+      ]
+    }
+  ]
+}

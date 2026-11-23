@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rocket Desk Clock firmware installer</title>
+<meta name="description" content="Install the Rocket Desk Clock firmware from your browser (Chrome or Edge on a PC).">
+<style>
+:root{--bg:#f6f7fb;--card:#ffffff;--ink:#17203a;--muted:#5b6785;--line:#dde2ee;--accent:#e8262f;--accent-ink:#ffffff;--warn-bg:#fff4e5;--warn-ink:#7a4300;--code:#eef1f8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1224;--card:#151c33;--ink:#e8ecf8;--muted:#9aa6c8;--line:#27304d;--accent:#ff4d55;--accent-ink:#1a0a0c;--warn-bg:#33270f;--warn-ink:#ffd48a;--code:#1d2642}}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Segoe UI","Malgun Gothic","Apple SD Gothic Neo",system-ui,sans-serif}
+html[lang="ko"] body{word-break:keep-all;overflow-wrap:anywhere}
+main{max-width:760px;margin:0 auto;padding:20px 16px 56px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+h1{font-size:1.7rem;line-height:1.25;margin:.2em 0 .1em}
+h2{font-size:1.15rem;margin:1.6em 0 .5em}
+p{margin:.5em 0}
+.sub{color:var(--muted);margin-top:.2em}
+.lang{display:flex;gap:4px;flex:none}
+.lang button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:4px 10px;font:inherit;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:14px 0}
+.card ul,.card ol{margin:.4em 0;padding-left:1.3em}
+.card li{margin:.25em 0}
+.install{text-align:center;padding:24px 16px}
+.btn{background:var(--accent);color:var(--accent-ink);border:0;border-radius:12px;padding:14px 28px;font:inherit;font-weight:700;font-size:1.1rem;cursor:pointer}
+.btn:hover{filter:brightness(1.06)}
+.ver{color:var(--muted);font-size:.9rem;margin-top:10px}
+.warn{display:block;background:var(--warn-bg);color:var(--warn-ink);border-radius:10px;padding:10px 14px;font-weight:600}
+code{background:var(--code);border-radius:5px;padding:1px 6px;font-family:Consolas,"Cascadia Mono",monospace;font-size:.92em}
+a{color:inherit;text-underline-offset:3px}
+footer{color:var(--muted);font-size:.9rem;margin-top:28px}
+[data-l]{display:none}
+html[lang="en"] [data-l="en"],html[lang="ko"] [data-l="ko"]{display:revert}
+html[lang="en"] span[data-l="en"],html[lang="ko"] span[data-l="ko"]{display:inline}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div>
+    <h1><span data-l="en">Rocket Desk Clock<br>firmware installer</span><span data-l="ko">로켓 탁상시계<br>펌웨어 설치</span></h1>
+    <p class="sub"><span data-l="en">Installs the clock firmware on the Waveshare ESP32-S3-Touch-AMOLED-1.75 round display module straight from your browser. No software to install.</span><span data-l="ko">Waveshare ESP32-S3-Touch-AMOLED-1.75 원형 디스플레이 모듈에 시계 펌웨어를 브라우저에서 바로 설치합니다. 따로 설치할 프로그램은 없습니다.</span></p>
+  </div>
+  <div class="lang" role="group" aria-label="Language">
+    <button type="button" data-set="en" aria-pressed="false">EN</button>
+    <button type="button" data-set="ko" aria-pressed="false">한국어</button>
+  </div>
+</header>
+
+<section class="card">
+  <strong><span data-l="en">Before you start</span><span data-l="ko">시작하기 전에</span></strong>
+  <ul data-l="en">
+    <li>A PC with <b>Chrome or Edge</b> (a phone is not recommended).</li>
+    <li>A USB-C <b>data</b> cable (a charge-only cable will not work).</li>
+    <li>Plug the cable into the <b>display module's own USB-C port</b>, which you reach through the opening on the side of the bezel. The USB-C socket at the back of the base only carries power and cannot be used for installing.</li>
+    <li>Close any serial monitor or other program that uses the board's serial port.</li>
+  </ul>
+  <ul data-l="ko">
+    <li><b>Chrome 또는 Edge</b>가 있는 PC (휴대폰은 권장하지 않습니다).</li>
+    <li>USB-C <b>데이터</b> 케이블 (충전 전용 케이블은 안 됩니다).</li>
+    <li>케이블은 베젤 옆면 개구부로 닿는 <b>디스플레이 모듈 자체의 USB-C</b> 포트에 꽂습니다. 받침대 뒤쪽 USB-C 소켓은 전원만 연결되어 있어 설치에는 쓸 수 없습니다.</li>
+    <li>보드의 시리얼 포트를 쓰는 다른 프로그램(시리얼 모니터 등)은 닫아 둡니다.</li>
+  </ul>
+</section>
+
+<section class="card install">
+  <esp-web-install-button manifest="manifest.json">
+    <button slot="activate" class="btn" type="button"><span data-l="en">Install firmware</span><span data-l="ko">펌웨어 설치</span></button>
+    <span slot="unsupported" class="warn"><span data-l="en">This browser cannot install firmware. Open this page in Chrome or Edge on a PC.</span><span data-l="ko">이 브라우저에서는 설치할 수 없습니다. PC의 Chrome 또는 Edge에서 이 페이지를 여세요.</span></span>
+    <span slot="not-allowed" class="warn"><span data-l="en">Installing only works on an HTTPS page. Open this page from its https:// address.</span><span data-l="ko">설치는 HTTPS 주소에서만 됩니다. https:// 주소로 이 페이지를 여세요.</span></span>
+  </esp-web-install-button>
+  <div class="ver"><span data-l="en">Firmware version:</span><span data-l="ko">펌웨어 버전:</span> <code id="ver">…</code></div>
+</section>
+
+<h2><span data-l="en">Steps</span><span data-l="ko">설치 순서</span></h2>
+<section class="card">
+  <ol data-l="en">
+    <li>Connect the clock's display module to your PC with the USB-C cable.</li>
+    <li>Click <b>Install firmware</b> and choose the new serial port that appears when you plug the clock in.</li>
+    <li>If asked, choose whether to erase the device first. For a first install, erasing is recommended; it also removes the saved Wi-Fi and settings. Then confirm and wait until it says the installation is complete. Do not unplug the cable. It can take a few minutes.</li>
+    <li>The clock restarts and shows a QR code and a Wi-Fi name like <code>FXClock-XXXX</code>.</li>
+  </ol>
+  <ol data-l="ko">
+    <li>시계의 디스플레이 모듈을 USB-C 케이블로 PC에 연결합니다.</li>
+    <li><b>펌웨어 설치</b>를 누르고, 시계를 꽂았을 때 새로 생기는 시리얼 포트를 고릅니다.</li>
+    <li>기기를 먼저 지울지 물으면 선택합니다. 처음 설치라면 지우기를 권장하며, 저장된 Wi-Fi와 설정도 같이 지워집니다. 확인한 뒤 설치가 끝났다는 안내가 나올 때까지 기다립니다. 케이블을 뽑지 마세요. 몇 분 걸릴 수 있습니다.</li>
+    <li>시계가 다시 시작하고 QR 코드와 <code>FXClock-XXXX</code> 같은 Wi-Fi 이름이 나옵니다.</li>
+  </ol>
+</section>
+
+<h2><span data-l="en">After the install: set up Wi-Fi</span><span data-l="ko">설치 뒤: Wi-Fi 설정</span></h2>
+<section class="card">
+  <ol data-l="en">
+    <li>Scan the QR code with your phone, or join the Wi-Fi called <code>FXClock-XXXX</code> (no password).</li>
+    <li>The setup page opens by itself. Choose your router and enter its password (<b>2.4 GHz only</b>). If the page does not open, turn off mobile data and open <code>http://192.168.4.1</code> in the browser. If the phone says there is no internet, choose to stay connected.</li>
+    <li>The clock restarts and shows the clock screen. To change the Wi-Fi later, hold the <b>BOOT</b> button for 3 seconds; this erases the saved Wi-Fi and returns to step 1.</li>
+  </ol>
+  <ol data-l="ko">
+    <li>휴대폰으로 QR 코드를 찍거나, Wi-Fi 목록에서 <code>FXClock-XXXX</code>에 연결합니다 (비밀번호 없음).</li>
+    <li>설정 창이 저절로 열립니다. 공유기를 고르고 비밀번호를 넣습니다 (<b>2.4GHz만 가능</b>). 창이 안 열리면 모바일 데이터를 끄고 브라우저에 <code>http://192.168.4.1</code>을 입력합니다. "인터넷에 연결되지 않음"이 나오면 연결 유지를 고릅니다.</li>
+    <li>시계가 다시 시작해 시계 화면을 보여 줍니다. 나중에 Wi-Fi를 바꾸려면 <b>BOOT</b> 버튼을 3초 누릅니다. 저장된 Wi-Fi가 지워지고 1번으로 돌아갑니다.</li>
+  </ol>
+  <p><span data-l="en">Voice control: say <b>"Hi ESP"</b>, then within 6 seconds an English command such as <code>page four</code>, <code>show clock</code>, <code>exchange rate</code> or <code>go to sleep</code>. The full list is on the clock's setup page: open <code>http://</code> followed by the clock's IP address in a browser on the same Wi-Fi (the IP is shown at the bottom of the watch-list screens).</span><span data-l="ko">음성 조작: <b>"Hi ESP"</b>라고 부른 뒤 6초 안에 <code>page four</code>, <code>show clock</code>, <code>exchange rate</code>, <code>go to sleep</code> 같은 영어 명령을 말합니다. 전체 목록은 시계의 설정 페이지에 있습니다. 같은 Wi-Fi의 브라우저에서 <code>http://</code> 다음에 시계의 IP 주소를 입력하세요 (IP는 관심 종목 화면 맨 아래에 표시됩니다).</span></p>
+</section>
+
+<h2><span data-l="en">If something goes wrong</span><span data-l="ko">잘 안 될 때</span></h2>
+<section class="card">
+  <ul data-l="en">
+    <li><b>The port list is empty:</b> use a data cable and another USB port. If it still does not show, unplug the cable, hold the <b>BOOT</b> button (the upper button on the side of the clock) while plugging it in, then try again.</li>
+    <li><b>The install stops or fails:</b> unplug and reconnect, close other programs that use the port, and try again, this time with erasing turned on.</li>
+    <li><b>No suitable browser:</b> install with a PC tool instead. See <a href="README.md">README.md</a> (esptool or the Espressif Flash Download Tool) and the files in <a href="firmware/">firmware/</a>.</li>
+  </ul>
+  <ul data-l="ko">
+    <li><b>포트 목록이 비어 있을 때:</b> 데이터 케이블과 다른 USB 포트를 써 보세요. 그래도 안 보이면 케이블을 뽑고, <b>BOOT</b> 버튼(시계 옆면의 위쪽 버튼)을 누른 채로 꽂은 뒤 다시 시도합니다.</li>
+    <li><b>설치가 멈추거나 실패할 때:</b> 케이블을 뽑았다 다시 꽂고, 포트를 쓰는 다른 프로그램을 닫은 뒤, 이번에는 지우기를 켜고 다시 시도합니다.</li>
+    <li><b>쓸 수 있는 브라우저가 없을 때:</b> PC 도구로 설치합니다. <a href="README.md">README.md</a>(esptool 또는 Espressif Flash Download Tool)와 <a href="firmware/">firmware/</a>의 파일을 보세요.</li>
+  </ul>
+</section>
+
+<h2><span data-l="en">Where the data comes from</span><span data-l="ko">데이터 출처</span></h2>
+<section class="card">
+  <ul data-l="en">
+    <li><b>Exchange rates, gold (futures price), stock indices:</b> Yahoo Finance chart data (<code>query1.finance.yahoo.com</code>). If it cannot be reached, the daily reference rates of <code>open.er-api.com</code> are used (exchange rates only).</li>
+    <li><b>Policy interest rates:</b> BIS statistics (<code>stats.bis.org</code>).</li>
+    <li><b>Korean and US watch-list prices, news and disclosures:</b> Naver Finance (<code>m.stock.naver.com</code>, <code>api.stock.naver.com</code>).</li>
+    <li><b>Time:</b> internet time servers (<code>pool.ntp.org</code>, <code>time.google.com</code>).</li>
+  </ul>
+  <ul data-l="ko">
+    <li><b>환율, 금(선물 가격), 주가지수:</b> Yahoo Finance 차트 데이터(<code>query1.finance.yahoo.com</code>). 연결되지 않으면 <code>open.er-api.com</code>의 일일 고시 환율을 씁니다(환율만).</li>
+    <li><b>기준금리:</b> BIS 통계(<code>stats.bis.org</code>).</li>
+    <li><b>한국·미국 관심 종목 시세, 뉴스, 공시:</b> 네이버 증권(<code>m.stock.naver.com</code>, <code>api.stock.naver.com</code>).</li>
+    <li><b>시각:</b> 인터넷 시간 서버(<code>pool.ntp.org</code>, <code>time.google.com</code>).</li>
+  </ul>
+  <p><span data-l="en">These are public web addresses, not official or licensed data feeds, and the clock uses them for personal use. The services can change or block them at any time, and their own terms of use apply. This project is not affiliated with or endorsed by any of them. The numbers on screen are not financial advice.</span><span data-l="ko">이 주소들은 공개 웹 주소이며 공식 또는 라이선스를 받은 데이터 제공이 아니고, 시계는 개인용으로 씁니다. 각 서비스가 언제든 바꾸거나 막을 수 있고 해당 서비스의 이용약관이 적용됩니다. 이 프로젝트는 이들과 관련이 없고 승인을 받은 것이 아닙니다. 화면의 숫자는 투자 조언이 아닙니다.</span></p>
+</section>
+
+<h2><span data-l="en">Good to know</span><span data-l="ko">알아 두세요</span></h2>
+<section class="card">
+  <ul data-l="en">
+    <li>Installing replaces the program that is on the board.</li>
+    <li>The clock needs a Wi-Fi connection to show market data.</li>
+    <li>This firmware is provided as is. Licences of the components it uses: <a href="THIRD-PARTY-NOTICES.txt">THIRD-PARTY-NOTICES.txt</a>. File checksums: <a href="firmware/SHA256SUMS.txt">SHA256SUMS.txt</a>.</li>
+  </ul>
+  <ul data-l="ko">
+    <li>설치하면 보드에 들어 있던 프로그램이 바뀝니다.</li>
+    <li>시세를 보려면 시계가 Wi-Fi에 연결되어 있어야 합니다.</li>
+    <li>이 펌웨어는 있는 그대로 제공됩니다. 사용한 구성 요소의 라이선스: <a href="THIRD-PARTY-NOTICES.txt">THIRD-PARTY-NOTICES.txt</a>. 파일 체크섬: <a href="firmware/SHA256SUMS.txt">SHA256SUMS.txt</a>.</li>
+  </ul>
+</section>
+
+<footer>
+  <span data-l="en">Installer built with <a href="https://github.com/esphome/esp-web-tools">ESP Web Tools</a> (Apache-2.0).</span><span data-l="ko">설치 도구: <a href="https://github.com/esphome/esp-web-tools">ESP Web Tools</a> (Apache-2.0).</span>
+</footer>
+</main>
+
+<script type="module" src="vendor/esp-web-tools/install-button.js"></script>
+<script>
+(function () {
+  var html = document.documentElement;
+  function setLang(l) {
+    html.setAttribute('lang', l);
+    document.querySelectorAll('.lang button').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.set === l ? 'true' : 'false'); });
+    try { localStorage.setItem('fxclock-lang', l); } catch (e) {}
+  }
+  var saved = null;
+  try { saved = localStorage.getItem('fxclock-lang'); } catch (e) {}
+  setLang(saved || ((navigator.language || '').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en'));
+  document.querySelectorAll('.lang button').forEach(function (b) { b.addEventListener('click', function () { setLang(b.dataset.set); }); });
+  fetch('manifest.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (m) {
+    document.getElementById('ver').textContent = m.version;
+  }).catch(function () { document.getElementById('ver').textContent = '?'; });
+})();
+</script>
+</body>
+</html>
