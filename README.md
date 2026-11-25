@@ -10,8 +10,8 @@ Waveshare ESP32-S3-Touch-AMOLED-1.75 원형 디스플레이 모듈용 펌웨어�
 Open `index.html` from its **https://** address in **Chrome or Edge on a PC**, plug the module's own USB-C port into the PC, click **Install firmware**.
 **https:// 주소**로 올린 `index.html`을 **PC의 Chrome 또는 Edge**에서 열고, 모듈 자체의 USB-C를 PC에 꽂은 뒤 **펌웨어 설치**를 누릅니다.
 
-> Use the USB-C port of the display module itself (through the opening on the side of the bezel). The USB-C socket at the back of the base is power only.
-> 베젤 옆 개구부로 닿는 디스플레이 모듈 자체의 USB-C를 쓰세요. 받침대 뒤쪽 USB-C 소켓은 전원 전용입니다.
+> Use the USB-C port of the display module itself (through the opening on the side of the bezel). If you also connected D+ and D- of the USB-C board in the base to the module's jumper pads, the USB-C socket at the back of the base can be used too; with only V and G connected it is power only.
+> 베젤 옆 개구부로 닿는 디스플레이 모듈 자체의 USB-C를 쓰세요. 받침대 안 USB-C 보드의 D+·D-도 모듈의 점퍼 패드에 연결했다면 받침대 뒤쪽 USB-C 소켓도 쓸 수 있고, V·G만 연결했다면 전원 전용입니다.
 
 ## 2. With esptool / esptool 로 설치
 
